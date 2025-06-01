@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Event Countdown Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 0 8px #ccc;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <%
+    User user = (User) session.getAttribute("user");
+    if (user != null) {
+        <!--out.print("Welcome, " + user.getUsername());-->
+    } else {
+        <!--response.sendRedirect("login.jsp");-->
+    }
+%>
+<h1>Add New Event</h1>
+<form action="add-event" method="post">
+    <label for="title">Event Title</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description"></textarea>
+
+    <label for="datetime">Date & Time</label>
+    <input type="datetime-local" id="datetime" name="datetime" required>
+
+    <label for="tag">Tag / Type</label>
+    <select id="tag" name="tag">
+        <option value="Birthday">Birthday</option>
+        <option value="hackathon">Hackathon</option>
+        <option value="training">Trainings</option>
+        <option value="graduation">Graduation</option>
+        <option value="travel️">Travel</option>
+    </select>
+
+    <button type="submit">Save Event</button>
+</form>
+</body>
+</html>
